@@ -18,6 +18,7 @@ namespace Portfolio.Context
 
             optionsBuilder.UseSqlServer(sections.GetConnectionString("Default"));
         }
+
         public DbSet<About> Abouts { get; set; }
         public DbSet<Experiences> Experiences { get; set; }
         public DbSet<Education> Educations { get; set; }
