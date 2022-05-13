@@ -1,0 +1,86 @@
+﻿@model PortfolioBaseViewModel
+@{ ViewData["Title"] = "About";
+                Layout = "~/Views/Shared/_Layout.cshtml"; }
+
+<!-- About-->
+<section class="resume-section" id="about">
+    <div class="resume-section-content">
+        <h1 class="mb-0">
+            @Model.About.Name
+            <span class="text-primary">  @Model.About.Surname</span>
+        </h1>
+        <div class="subheading mb-5">
+            @Model.About.Address ·  @Model.About.PhoneNumber·
+            <a href="mailto:name@email.com">@Model.About.Email</a>
+        </div>
+        <p class="lead mb-5">@Model.About.Description</p>
+        <div class="social-icons">
+            <a class="social-icon" href="#!"><i class="fab fa-linkedin-in"></i></a>
+            <a class="social-icon" href="#!"><i class="fab fa-github"></i></a>
+            <a class="social-icon" href="#!"><i class="fab fa-twitter"></i></a>
+        </div>
+    </div>
+</section>
+<hr class="m-0" />
+<!-- Experience-->
+<section class="resume-section" id="experience">
+    <div class="resume-section-content">
+        <h2 class="mb-5">Eğitim</h2>
+        @foreach (var item in Model.Experiences)
+        {
+<div class="d-flex flex-column flex-md-row justify-content-between mb-5">
+
+    <div class="flex-grow-1">
+        <h3 class="mb-0">@item.Position</h3>
+        <div class="subheading mb-3">@item.CompanyName</div>
+        <p>@item.Description</p>
+    </div>
+    <div class="flex-shrink-0">
+        <span class="text-primary">
+            @item.StartDate.Date.ToString("dd:MM:yyyy") - @item.EndDate.ToString("dd:MM:yyyy")
+        </span>
+    </div>
+
+</div>}
+    </div>
+</section>
+<hr class="m-0" />
+<!-- Education-->
+<section class="resume-section" id="education">
+    <div class="resume-section-content">
+        <h2 class="mb-5">Eğitim</h2>
+        @foreach (var item in Model.Educations)
+        {
+<div class="d-flex flex-column flex-md-row justify-content-between mb-5">
+    <div class="flex-grow-1">
+        <h3 class="mb-0">@item.SchoolName</h3>
+        <div class="subheading mb-3">Bachelor of Science</div>
+        <div>@item.SectionName</div>
+    </div>
+    <div class="flex-shrink-0"><span class="text-primary">@item.StartDate.ToString("dd:MM:yyyy") - @item.EndDate.ToString("dd:MM:yyyy")</span></div>
+</div>}
+
+
+    </div>
+</section>
+<hr class="m-0" />
+<!-- Skills-->
+<section class="resume-section" id="skills">
+    <div class="resume-section-content">
+        <h2 class="mb-5">Yetenekler</h2>
+        <div class="subheading mb-3">Programlama Dilleri ve Araçlar</div>
+        <ul class="list-inline dev-icons">
+            @{ var count = Model.Skills.Count;
+                            int counter = 0;
+
+                            foreach (var item in Model.Skills)
+                            {
+                                counter++;
+                <li class="list-inline-item">@item.Title</li> if (counter < count)
+                                {
+                <span>,</span> }
+
+                            } }
+        </ul>
+    </div>
+</section>
