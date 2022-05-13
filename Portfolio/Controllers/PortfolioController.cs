@@ -11,8 +11,11 @@ namespace Portfolio.Controllers
 {
     public class PortfolioController : Controller
     {
-        private object context;
 
+        /// <summary>
+        /// Tüm portföy verileri bu action altında dolduruluyor
+        /// </summary>
+        /// <returns></returns>
         public ActionResult Portfolio()
 
         {
